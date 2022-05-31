@@ -3,3 +3,9 @@ exports.Home = (req, res) => {
         nombrePagina: "Task manager"
     });
 }
+
+exports.nuevoProyecto = (req, res) => {
+    res.render('nuevoProyecto', {
+        nombrePagina: "Nuevo Proyecto"
+    });
+}
