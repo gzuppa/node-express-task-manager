@@ -1,3 +1,5 @@
 exports.Home = (req, res) => {
-    res.send("Index");
+    res.render('index', {
+        nombrePagina: "Task manager"
+    });
 }
