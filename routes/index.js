@@ -5,6 +5,7 @@ const controller = require('../controllers/controller')
 
 module.exports = function () {
     router.get('/', controller.Home);
-    router.get('/nuevo-proyecto', controller.nuevoProyecto)
+    router.get('/nuevo-proyecto', controller.formularioProyecto);
+    router.post('/nuevo-proyecto', controller.nuevoProyecto)
     return router;
 }
