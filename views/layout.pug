@@ -6,25 +6,25 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="/css/normalize.css")
         link(rel="stylesheet", href="/css/app.css")
-        title #{nombrePagina}
+        title #{pageName}
     body
-        header.barra
-            h1 Task Manager - Administrador de proyectos
-            a(href="#") Cerrar sesión
+        header.bar
+            h1 Task Manager
+            a(href="#") Close session
 
-        main.contenedor
-            aside.contenedor-proyectos
-                .panel.crear-proyecto
-                    a(href="/nuevo-proyecto" class="boton") Nuevo
+        main.container
+            aside.task-container
+                .panel.add-task
+                    a(href="/new-project" class="button") New
                         span +
-                .panel.lista-proyectos
-                    h2 Proyectos
-                    ul#proyectos.proyectos
+                .panel.task-list
+                    h2 Tasks
+                    ul#tasks.tasks
                         li
-                            a(href="#") Tienda
+                            a(href="#") Store
                         li
                             a(href="#") Blog
                         li
-                            a(href="#") Nosotros
+                            a(href="#") Us
 
-            block contenido
+            block content

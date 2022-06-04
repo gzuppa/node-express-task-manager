@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .main-content
+        h1 #{pageName}
+
+        if errors
+            each error in errors
+                .alert= error.text
+
+        form.add-project(action="/new-project" method="POST")
+            .field
+                label(for="name") Task name:
+                input#name(type="text" name="name" placeholder="Task name")
+            .field.send
+                input.button(type="submit" value="Add")

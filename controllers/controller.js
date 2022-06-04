@@ -1,34 +1,33 @@
-const Proyectos = require('../models/Proyectos');
+const Tasks = require('../models/Tasks');
 
 exports.Home = (req, res) => {
     res.render('index', {
-        nombrePagina: "Task manager"
+        pageName: "Task manager"
     });
 }
 
-exports.formularioProyecto = (req, res) => {
-    res.render('nuevoProyecto', {
-        nombrePagina: "Nuevo Proyecto"
+exports.taskForm = (req, res) => {
+    res.render('newTask', {
+        pageName: "New Task"
     });
 }
 
-exports.nuevoProyecto = (req, res) => {
-    const { nombre } = req.body;
+exports.newTask = async (req, res) => {
+    const { name } = req.body;
 
-    let errores = [];
+    let errors = [];
 
-    if(!nombre) {
-        errores.push({'texto': 'Agrega un nombre al proyecto'})
+    if(!name) {
+        errors.push({'text': 'Add a task name'})
     }
 
-    if(errores.length > 0) {
-        res.render('nuevoProyecto', {
-            nombrePagina : 'Nuevo Proyecto',
-            errores
+    if(errors.length > 0) {
+        res.render('newTask', {
+            pageName : 'New Task',
+            errors
         })
     } else {
-        Proyectos.create({ nombre })
-            .then(() => console.log("Insertado correctamente"))
-            .catch(error => console.log(error))
+        const task = await Tasks.create({ name });
+        res.redirect('/')
     }
 }
