@@ -6,10 +6,10 @@ const Proyectos = db.define('proyectos', {
     id : {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true
     },
-    nombre : Sequelize.INTEGER,
-    url: Sequelize.INTEGER,
+    nombre : Sequelize.STRING,
+    url : Sequelize.STRING
 });
 
 module.exports = Proyectos;

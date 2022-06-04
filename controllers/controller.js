@@ -1,3 +1,5 @@
+const Proyectos = require('../models/Proyectos');
+
 exports.Home = (req, res) => {
     res.render('index', {
         nombrePagina: "Task manager"
@@ -24,5 +26,9 @@ exports.nuevoProyecto = (req, res) => {
             nombrePagina : 'Nuevo Proyecto',
             errores
         })
+    } else {
+        Proyectos.create({ nombre })
+            .then(() => console.log("Insertado correctamente"))
+            .catch(error => console.log(error))
     }
 }
