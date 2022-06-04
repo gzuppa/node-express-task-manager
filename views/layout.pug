@@ -20,11 +20,9 @@ html(lang="en")
                 .panel.task-list
                     h2 Tasks
                     ul#tasks.tasks
-                        li
-                            a(href="#") Store
-                        li
-                            a(href="#") Blog
-                        li
-                            a(href="#") Us
-
+                        if(tasks.length)
+                            each task in tasks
+                                li
+                                    a(href=`/tasks/${task.url}`)= task.name
             block content
+            pre= dump(tasks)
