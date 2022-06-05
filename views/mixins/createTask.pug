@@ -1,0 +1,7 @@
+mixin createTask(task = {})
+    form.add-project(action=`/new-project/${task.id || ''}` method="POST")
+        .field
+            label(for="name") Task name:
+            input#name(value=task.name type="text" name="name" placeholder="Task name")
+        .field.send
+            input.button(type="submit" value=`${task.name ? "Save" : "Add"}`)

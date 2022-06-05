@@ -2,4 +2,8 @@ extends layout
 
 block content
     .main-content
-        h1 #{pageName}
+        h1 #{pageName} - #{task.name}
+
+        .container-actions
+            a.button(href=`/task/edit/${task.id}`) Edit task
+            button#delete-task(type="button" class="button delete") Delete task

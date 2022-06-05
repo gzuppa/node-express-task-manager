@@ -17,5 +17,15 @@ module.exports = function () {
         controller.newTask)
 
     router.get('/tasks/:url', controller.taskByUrl)
+
+    router.get('/task/edit/:id', controller.editTask)
+
+    router.post('/new-project/:id',
+        body('name')
+            .not()
+            .isEmpty()
+            .trim()
+            .escape(),
+        controller.updateTask)
     return router;
 }
