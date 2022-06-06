@@ -4,6 +4,13 @@ block content
     .main-content
         h1 #{pageName} - #{task.name}
 
+        form.add-project(action=`/tasks/${task.url}` method="POST")
+            .field
+                label(for="subtask") Subtask:
+                input.name-task(type="text" name="subtask" placeholder="Subtask name")
+            .field.send
+                input.button.new-subtask(type="submit" value="Add")
+
         .container-actions
             a.button(href=`/task/edit/${task.id}`) Edit task
             button#delete-task(data-task-url=task.url type="button" class="button delete") Delete task
