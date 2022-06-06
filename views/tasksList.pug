@@ -6,4 +6,4 @@ block content
 
         .container-actions
             a.button(href=`/task/edit/${task.id}`) Edit task
-            button#delete-task(type="button" class="button delete") Delete task
+            button#delete-task(data-task-url=task.url type="button" class="button delete") Delete task

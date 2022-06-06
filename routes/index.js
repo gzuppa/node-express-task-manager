@@ -27,5 +27,7 @@ module.exports = function () {
             .trim()
             .escape(),
         controller.updateTask)
+
+    router.delete('/tasks/:url', controller.deleteTask)
     return router;
 }

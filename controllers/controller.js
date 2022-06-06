@@ -96,3 +96,17 @@ exports.updateTask = async (req, res) => {
         res.redirect('/')
     }
 }
+
+exports.deleteTask = async(req, res, next) => {
+    const {urlTask} = req.query;
+
+    const result = await Tasks.destroy(
+        { where: {
+            url: urlTask
+        }}
+    )
+    if(!result) {
+        return next();
+    }
+    res.send('Task deleted')
+}
