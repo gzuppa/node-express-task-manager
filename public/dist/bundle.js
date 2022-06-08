@@ -375,7 +375,18 @@ eval("var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_tasks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/tasks */ \"./public/js/modules/tasks.js\");\n\n\n//# sourceURL=webpack://tasksproject/./public/js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_tasks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/tasks */ \"./public/js/modules/tasks.js\");\n/* harmony import */ var _modules_subtasks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/subtasks */ \"./public/js/modules/subtasks.js\");\n\n\n\n//# sourceURL=webpack://tasksproject/./public/js/app.js?");
+
+/***/ }),
+
+/***/ "./public/js/modules/subtasks.js":
+/*!***************************************!*\
+  !*** ./public/js/modules/subtasks.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar subtasks = document.querySelector('.pending-list');\n\nif (subtasks) {\n  subtasks.addEventListener('click', function (e) {\n    if (e.target.classList.contains('fi-br-check')) {\n      var icon = e.target;\n      var idSubtask = icon.parentElement.parentElement.dataset.subtask;\n      var url = \"\".concat(location.origin, \"/subtasks/\").concat(idSubtask);\n      axios__WEBPACK_IMPORTED_MODULE_0___default().patch(url, {\n        idSubtask: idSubtask\n      }).then(function (response) {\n        if (response.status === 200) {\n          icon.classList.toggle('complete');\n        }\n      });\n    }\n  });\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (subtasks);\n\n//# sourceURL=webpack://tasksproject/./public/js/modules/subtasks.js?");
 
 /***/ }),
 

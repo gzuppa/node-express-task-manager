@@ -14,3 +14,21 @@ exports.addSubtask = async (req, res) => {
     }
     res.redirect(`/tasks/${req.params.url}`)
 }
+
+exports.updateSubtaskStatus = async(req, res, next) => {
+    const { id } = req.params;
+    const subtask = await Subtasks.findOne({where: { id }})
+
+    let status = 0;
+
+    if(subtask.status === status) {
+        status = 1;
+    }
+
+    subtask.status = status;
+
+    const result = await subtask.save();
+
+    if(!result) return next();
+    res.status(200).send('Updated')
+}

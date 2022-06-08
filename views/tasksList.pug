@@ -15,7 +15,7 @@ block content
             ul
                 if subtasks.length
                     each subtask in subtasks 
-                        li.subtask 
+                        li.subtask(data-subtask=subtask.id)
                             p= subtask.subtask
                             .actions
                                 if subtask.status
