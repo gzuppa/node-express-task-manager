@@ -32,3 +32,11 @@ exports.updateSubtaskStatus = async(req, res, next) => {
     if(!result) return next();
     res.status(200).send('Updated')
 }
+
+exports.deleteSubtask = async(req, res, next) => {
+    const { id } = req.params;
+    const result = await Subtasks.destroy({where: { id }})
+
+    if(!result) return next();
+    res.status(200).send('Deleting')
+}

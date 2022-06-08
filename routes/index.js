@@ -34,5 +34,7 @@ module.exports = function () {
     router.post('/tasks/:url', tasksController.addSubtask)
 
     router.patch('/subtasks/:id', tasksController.updateSubtaskStatus)
+
+    router.delete('/subtasks/:id', tasksController.deleteSubtask)
     return router;
 }
