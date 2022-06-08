@@ -1,4 +1,5 @@
 const Tasks = require('../models/Tasks');
+const Subtasks = require('../models/Subtasks');
 
 exports.Home = async (req, res) => {
     const tasks = await Tasks.findAll()
@@ -46,11 +47,19 @@ exports.taskByUrl = async (req, res) => {
     })
 
     const [tasks, task] = await Promise.all([tasksPromise, taskPromise])
+    
+    const subtasks = await Subtasks.findAll({
+        where: {
+            taskId: task.id
+        }
+    })
+
     if(!task) return next();
     res.render('tasksList', {
         pageName: "Tasks List",
         task,
         tasks,
+        subtasks
     } )
 }
 

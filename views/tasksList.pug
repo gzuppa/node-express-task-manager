@@ -11,6 +11,21 @@ block content
             .field.send
                 input.button.new-subtask(type="submit" value="Add")
 
+        .pending-list
+            ul
+                if subtasks.length
+                    each subtask in subtasks 
+                        li.subtask 
+                            p= subtask.subtask
+                            .actions
+                                if subtask.status
+                                    i.fi.fi-br-check.completo
+                                else 
+                                    i.fi.fi-br-check
+                                i.fi.fi-br-cross
+                else 
+                    p No subtasks for this task
+
         .container-actions
             a.button(href=`/task/edit/${task.id}`) Edit task
             button#delete-task(data-task-url=task.url type="button" class="button delete") Delete task
