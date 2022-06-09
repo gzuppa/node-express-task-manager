@@ -1,5 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2"
+import {updateProgress} from '../functions/progress'
 
 const subtasks = document.querySelector('.pending-list');
 
@@ -13,6 +14,7 @@ if(subtasks) {
                 .then(function(response){
                     if(response.status === 200){
                         icon.classList.toggle('complete');
+                        updateProgress();
                 }
             })
         }
@@ -39,6 +41,7 @@ if(subtasks) {
                                         response.data,
                                         'success'
                                     )
+                                    updateProgress();
                                 }
                             })
                 }
