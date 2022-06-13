@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db');
 const Tasks = require('./Tasks')
+const bcrypt = require('bcryptjs');
 
 const Users = db.define('users', {
     id: {
@@ -15,6 +16,12 @@ const Users = db.define('users', {
     password: {
         type: Sequelize.STRING(60),
         allowNull: false
+    }
+}, {
+    hooks: {
+        beforeCreate(user) {
+            user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10))
+        }
     }
 })
 
