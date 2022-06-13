@@ -2,6 +2,7 @@ const express = require('express');
 const routes = require('./routes');
 const path = require('path');
 const bodyParser = require('body-parser');
+const flash = require('connect-flash');
 
 const helpers = require('./helpers');
 
@@ -16,6 +17,8 @@ db.sync()
 
 // Starting server configuration
 const app = express();
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 //Public files loading
 app.use(express.static('public'));
@@ -32,7 +35,7 @@ app.use((req, res, next) => {
 //Routes path
 app.set('views', path.join(__dirname, './views'));
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(flash())
 
 app.use('/', routes());
 

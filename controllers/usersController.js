@@ -6,13 +6,19 @@ exports.createAccount = (req, res) => {
     })
 }
 
-exports.newAccount = (req, res) => {
+exports.newAccount = async (req, res) => {
     const { email, password } = req.body;
-    Users.create({
-        email,
-        password
-    })
-    .then(() => {
+    
+    try {
+        await  Users.create({
+            email,
+            password
+        });
         res.redirect('/login')
-    })
+    } catch (error) {
+        res.render('createAccount', {
+            err: error.errors,
+            pageName: 'Create Account'
+        }) 
+    }
 }

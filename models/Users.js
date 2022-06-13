@@ -11,11 +11,28 @@ const Users = db.define('users', {
     },
     email: {
         type: Sequelize.STRING(60),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isEmail: {
+                msg: "Write a valid email address"
+            },
+            notEmpty: {
+                msg: "Please enter an email address"
+            }
+        },
+        unique: {
+            args: true,
+            msg: "User registered yet"
+        }
     },
     password: {
         type: Sequelize.STRING(60),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Please enter a password"
+            }
+        }
     }
 }, {
     hooks: {

@@ -6,6 +6,10 @@ html(lang="en")
         .form-container 
             h1 Create Account 
 
+            if err
+                each error in err
+                    p.error.alert= error.message
+            
             form#form.box.login-box(method="POST" action="/create-account")
                 .field
                     label(for="email") E-mail: 
