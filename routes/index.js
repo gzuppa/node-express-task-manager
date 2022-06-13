@@ -3,6 +3,7 @@ const router = express.Router();
 const  { body } = require('express-validator')
 const controller = require('../controllers/controller')
 const tasksController = require('../controllers/tasksController')
+const usersController = require('../controllers/usersController')
 
 module.exports = function () {
     router.get('/', controller.Home);
@@ -36,5 +37,7 @@ module.exports = function () {
     router.patch('/subtasks/:id', tasksController.updateSubtaskStatus)
 
     router.delete('/subtasks/:id', tasksController.deleteSubtask)
+
+    router.get('/create-account', usersController.createAccount)
     return router;
 }

@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+    head
+        include partials/header
+    body
+        .form-container 
+            h1 Create Account 
+
+            form#form.box.login-box(method="POST" action="/create-account")
+                .field
+                    label(for="email") E-mail: 
+                    input(type="email" name="email" placeholder="Your email")
+                .field
+                    label(for="password") Password:
+                    input(type="password" name="password" placeholder="Your password")
+                .field.send
+                    input.button(type="submit" value="Create Account")
+                .field 
+                    a(href="#/login") Login
+        
+        script(src="/dist/bundle.js")
