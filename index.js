@@ -9,6 +9,7 @@ const helpers = require('./helpers');
 const db = require('./config/db');
 require('./models/Tasks');
 require('./models/Subtasks');
+require('./models/Users');
 db.sync()
     .then(() => console.log("Conectado al servidor"))
     .catch(error => console.log(error));

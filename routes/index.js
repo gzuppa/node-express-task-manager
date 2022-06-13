@@ -39,5 +39,7 @@ module.exports = function () {
     router.delete('/subtasks/:id', tasksController.deleteSubtask)
 
     router.get('/create-account', usersController.createAccount)
+
+    router.post('/create-account', usersController.newAccount)
     return router;
 }
