@@ -3,6 +3,8 @@ const routes = require('./routes');
 const path = require('path');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 const helpers = require('./helpers');
 
@@ -18,24 +20,33 @@ db.sync()
 // Starting server configuration
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: true}));
-
 //Public files loading
 app.use(express.static('public'));
 
 //Avaliability of pug as engine
 app.set('view engine', 'pug');
 
-//Using dump on application (helpers)
-app.use((req, res, next) => {
-    res.locals.dump = helpers.dump;
-    next();
-})
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(flash());
+
+app.use(cookieParser());
 
 //Routes path
 app.set('views', path.join(__dirname, './views'));
 
-app.use(flash())
+app.use(session({
+    secret: 'SuperSecret',
+    resave: false,
+    saveUninitialized: false
+}))
+
+//Using dump on application (helpers)
+app.use((req, res, next) => {
+    res.locals.dump = helpers.dump;
+    res.locals.messages = req.flash();
+    next();
+})
 
 app.use('/', routes());
 

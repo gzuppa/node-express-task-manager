@@ -16,9 +16,12 @@ exports.newAccount = async (req, res) => {
         });
         res.redirect('/login')
     } catch (error) {
+        req.flash('error', error.errors.map(error => error.message));
         res.render('createAccount', {
-            err: error.errors,
-            pageName: 'Create Account'
+            messages: req.flash(),
+            pageName: 'Create Account',
+            email,
+            password
         }) 
     }
 }
